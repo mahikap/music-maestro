@@ -48,7 +48,7 @@ async function setup() {
 }
 
 function startPitch(stream, audioContext) {
-    pitch = ml5.pitchDetection('./model/', audioContext , stream, modelLoaded);
+    pitch = ml5.pitchDetection('./model', audioContext , stream, modelLoaded);
 }
 
 function modelLoaded() {
