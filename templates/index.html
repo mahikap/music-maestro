@@ -20,10 +20,14 @@
     <title>Hello!</title>
     
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./templates/style.css"> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     
     <!-- import the webpage's javascript file -->
-    <script src="./script.js" defer></script>
+    <!-- <script src="./script.js" defer></script> -->
+    <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+
+
   </head>  
   <body>
     

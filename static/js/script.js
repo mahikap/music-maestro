@@ -48,11 +48,13 @@ async function setup() {
 }
 
 function startPitch(stream, audioContext) {
-    pitch = ml5.pitchDetection('./model', audioContext , stream, modelLoaded);
+    pitch = ml5.pitchDetection('static/js/model', audioContext , stream, modelLoaded);
 }
 
 function modelLoaded() {
-    select('#status').html('Model Loaded');
+    select('#status').html('Model Loaded'); 
+
+    console.log("comes here");
     getPitch();
 }
 
@@ -62,6 +64,8 @@ function getPitch() {
             midiNum = freqToMidi(frequency);
             current = Tonal.Midi.midiToNoteName(midiNum)
             select('#currentNote').html(current);
+
+            console.log("comes here2");
         }
         getPitch();
     })

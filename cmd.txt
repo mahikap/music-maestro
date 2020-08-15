@@ -1,0 +1,13 @@
+python3 -m pip install virtualenv
+
+sudo /usr/bin/easy_install virtualenv
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+python3 -m pip install flask
+
+python3 -m pip install flask_cors
+
+python app.py
