@@ -1,10 +1,7 @@
 body {
-    font-family: helvetica, arial, sans-serif;
-    margin: 2em;
+    margin: 0;
 }
-
-h1 {
-    font-style: italic;
-    color: #373fff;
+.start-button {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
-  

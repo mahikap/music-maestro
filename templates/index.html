@@ -18,26 +18,51 @@
     <!-- Tone Library recommended in Bitrate slack channel for music conversations-->
     <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
     <title>Hello!</title>
-    
+
+    <!-- Materialize UI CSS and JS file-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Import Google Fonts-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+      
+            
     <!-- import the webpage's stylesheet -->
-    <!-- <link rel="stylesheet" href="./templates/style.css"> -->
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     
     <!-- import the webpage's javascript file -->
-    <!-- <script src="./script.js" defer></script> -->
     <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
 
 
   </head>  
   <body>
+    <nav>
+      <div class="nav-wrapper indigo lighten-3">
+        <a href="#" class="brand-logo">Maestro</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="./">Sign In</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <blockquote style="border-left: 5px solid black;">
+          <h2 style="font-family: 'Nanum Myeongjo', serif;">
+            maes &#183; stro
+          </h2>
+          <p style="font-family: 'Roboto', sans-serif; font-style: italic;">
+              a distinguished musician, especially a conductor of classical music.
+          </p>
+      </blockquote>
+      
     
-    <h1>Hi World!</h1>
-    
-    <button id="generate-melody">Generate Melody</button>
-    <button id="detect-pitch">Detect my Pitch!</button>
-    
-    <p id='status'>Loading Model...</p>
-    
-    <p>Current Note: <span id="currentNote"></span> </p>
+      <div class="row">
+          <a class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="generate-melody">Generate Melody</a>
+          <a class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="detect-pitch">Detect my Pitch!</a>
+      </div>
+      
+      <p id='status'>Loading Model...</p>
+      
+      <p>Current Note: <span id="currentNote"></span> </p>
+    </div>
   </body>
 </html>
