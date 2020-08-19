@@ -5,3 +5,30 @@ body {
     font-family: 'Roboto', sans-serif;
     text-align: center;
 }
+
+
+.collection {
+    border: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.collection.with-header .collection-item {
+    color: black;
+    line-height: 4.0rem;
+}
+
+nav .brand-logo {
+    height: 45px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0), 0 0px 0px 0px rgba(0,0,0,0), 0 0px 0px 0 rgba(0,0,0,0);
+}
+
+.locked {
+    vertical-align: sub;
+    padding-right: 12px;
+}
