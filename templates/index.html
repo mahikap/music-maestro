@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@2.0.13/dist/NexusUI.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
 
@@ -35,9 +36,18 @@
     
     <button id="generate-melody">Generate Melody</button>
     <button id="detect-pitch">Detect my Pitch!</button>
-    
+    <button id="practice">Practice this song!</button>
+
+    <!-- <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div> -->
     <p id='status'>Loading Model...</p>
     
     <p>Current Note: <span id="currentNote"></span> </p>
+
+   <div id="main-container">
+    <div id="note-container"></div>
+    <div id="sequencer"></div>
+   </div>
   </body>
 </html>
