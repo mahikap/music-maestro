@@ -6,6 +6,9 @@ body {
     text-align: center;
 }
 
+h4 {
+    padding-top: 10px;
+}
 
 .collection {
     border: 0px;
@@ -31,4 +34,44 @@ nav .brand-logo {
 .locked {
     margin-top: 1.2rem;
     padding-right: 12px;
+}
+
+.tabs {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #eeeeee;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color:#eeeeee;
+}
+.tabs .tab a {
+    color: darkslategray;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: #e8eaf6;
+    color: black;
+    outline: none;
+    border: none;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: #e8eaf6;
+    color: black;
+}
+.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+    color: lightgrey;
+    cursor: default;
+}
+
+a.back {
+    color: darkgray;
+}
+
+.row .col {
+    padding-left: 0;
+}
+
+.tabs .indicator {
+    height: 0px;
 }
