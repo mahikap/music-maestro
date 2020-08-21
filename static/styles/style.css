@@ -82,7 +82,7 @@ a.back {
 }
 
 .note-label {   
-    height: 19px;   
+    height: 18px;   
     width:100%;  
     font-size:small;
     margin-bottom: 1px;
@@ -94,7 +94,7 @@ a.back {
 
 #main-container {
     width: 80%;
-    height: 200px;
+    height: 690px;
     margin: auto;
     padding: 10px;
   }
