@@ -4,14 +4,7 @@ var melodyRnn = new music_rnn.MusicRNN(
 let rnnLoaded = melodyRnn.initialize();
 var player = new mm.Player();
 
-let sequencer = new Nexus.Sequencer('#sequencer', {
-    columns: 32,
-    rows: 50,
-    mode: 'toggle',
-    size: [600, 1000]
-})
-
-let sequencerRows = ['B3', 'G#3', 'E3', 'C#3', 'B2', 'G#2', 'E2', 'C#2', 'B1', 'G#1', 'E1', 'C#1'];
+let sequencerRows = ['B5', 'Bb5', 'A5', 'Ab5', 'G5', 'Gb5', 'F5', 'E5', 'Eb5', 'D5', 'Db5', 'C5','B4', 'Bb4', 'A4', 'Ab4', 'G4', 'Gb4', 'F4', 'E4', 'Eb4', 'D4', 'Db4', 'C4','B3', 'Bb3', 'A3', 'Ab3', 'G3', 'Gb3', 'F3', 'E3', 'Eb3', 'D3', 'Db3', 'C3'];
 let main_container = document.getElementById("note-container")
 var note;
 for (note of sequencerRows){
@@ -20,6 +13,13 @@ for (note of sequencerRows){
     temp.className = "note-label";
     temp.innerText = note;
 }
+
+let sequencer = new Nexus.Sequencer('#sequencer', {
+    columns: 32,
+    rows: sequencerRows.length,
+    mode: 'toggle',
+    size: [600, 680]
+})
 const seqBlocks = document.getElementById("sequencer").querySelectorAll('rect');
 num = 1;
 [].forEach.call(seqBlocks, function(item){ 
@@ -31,13 +31,14 @@ let current_col;
 let prev;
 
 document.getElementById("generate-melody").onclick = async () => {
+    console.log(Tone.Frequency(50, "midi").toFrequency());
     await rnnLoaded;
     let seed = {
         notes: [
-        { pitch: 50, startTime: 0.0, endTime: 0.5 },
-        { pitch: 51, startTime: 0.5, endTime: 1.0 },
-        { pitch: 65, startTime: 1.0, endTime: 1.5 },
-        { pitch: 66, startTime: 1.5, endTime: 2.0 }
+        { pitch: 60, startTime: 0.0, endTime: 0.5 },
+        { pitch: 64, startTime: 0.5, endTime: 1.0 },
+        { pitch: 63, startTime: 1.0, endTime: 1.5 },
+        { pitch: 62, startTime: 1.5, endTime: 2.0 }
         ],
         tempos: [{
         time: 0, 
@@ -50,7 +51,7 @@ document.getElementById("generate-melody").onclick = async () => {
     var rnn_temp = 1.5;
     var chord_prog = ['C'];
     const qns = mm.sequences.quantizeNoteSequence(seed, 4);
-    console.log(qns);
+
     // melodyRnn
     //     .continueSequence(qns, rnn_steps, rnn_temp, chord_prog)
     //     .then((sample) => player.start(sample));
@@ -66,11 +67,7 @@ document.getElementById("generate-melody").onclick = async () => {
     for (let note of result.notes) {
         midiNum = freqToMidi(note.pitch);
         current = Tonal.Midi.midiToNoteName(midiNum)
-        console.log(midiNum);
-        console.log(current);
-        let row = getSequencerRow(note.pitch)
-        console.log(row);
-        console.log("---");
+        let row = getSequencerRow(Tone.Frequency(note.pitch, "midi").toFrequency()) 
         if (row >= 0) {
             sequencer.matrix.set.cell(column, row, 1);
             column +=1;
@@ -143,6 +140,7 @@ function getPitch() {
     pitch.getPitch(function(err, frequency) {
         if (frequency) {
             midiNum = freqToMidi(frequency);
+            console.log(midiNum);
             current = Tonal.Midi.midiToNoteName(midiNum)
             select('#currentNote').html(current);
             if(prev) {
@@ -150,7 +148,9 @@ function getPitch() {
                 if(prev[0] == current_col) {
                     setDetected(prev[0], prev[1], false) 
                 }
-                setDetected(current_col, row, true);
+                if(row > 0) {
+                    setDetected(current_col, row, true);
+                }
             }
             prev = [current_col, getSequencerRow(frequency)]
         }
@@ -170,5 +170,6 @@ function setDetected(col, row, on) {
 
 function getSequencerRow(freq) {
     midiNum = freqToMidi(freq);
-    return midiNum - freqToMidi(50) + 1
+    current = Tonal.Midi.midiToNoteName(midiNum);
+    return sequencerRows.indexOf(current)
 }
