@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% block head %}
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@2.0.13/dist/NexusUI.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
 
       <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.19.0/es6/music_rnn.js"></script> 
@@ -32,8 +32,7 @@
       <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
       
       <!-- import the webpage's javascript file -->
-      <!-- <script src="{{ url_for('static',filename='js/script.js') }}" defer></script> -->
-    {% endblock %}
+      <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
   </head>  
   <body>
     <nav>
@@ -57,5 +56,7 @@
       <a href="{{ url_for('lessons') }}" class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="get-started">Get Started</a>
       
     </div>
+
+   
   </body>
 </html>

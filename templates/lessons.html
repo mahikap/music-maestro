@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@2.0.13/dist/NexusUI.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
 
@@ -29,7 +30,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     
     <!-- import the webpage's javascript file -->
-    <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+    <script src="{{ url_for('static',filename='js/formatting.js') }}" defer></script>
 
 </head>
 
@@ -76,13 +77,13 @@
                 <div class="collapsible-body"><span>Blah Blah 5</div></li>
         </ul>
                     
-        <div class="row">
+        <!-- <div class="row">
             <a class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="generate-melody">Generate Melody</a>
             <a class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="detect-pitch">Detect my Pitch!</a>
         </div>
         
         <p id='status'>Loading Model...</p>
         
-        <p>Current Note: <span id="currentNote"></span> </p>
+        <p>Current Note: <span id="currentNote"></span> </p> -->
     </div>
 </body>

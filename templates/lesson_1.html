@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -5,6 +7,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@2.0.13/dist/NexusUI.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
 
     <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
@@ -61,14 +64,28 @@
                     <li class="tab col s3 disabled"><a href="#test5">Practice III</a></li>
                 </ul>
             </div>
+            
             <div id="test1" class="col s12">
                 Practice (Insert sequencer here with aiming to hit sequence- C D E D C)
+                <button id="generate-melody">Generate Melody</button>
+                <button id="detect-pitch">Detect my Pitch!</button>
+                <button id="practice">Practice this song!</button>
+
+                <p id='status'>Loading Model...</p>
+                
+                <p>Current Note: <span id="currentNote"></span> </p>
+                <div id="main-container">
+                    <div id="note-container"></div>
+                    <div id="sequencer"></div>
+                </div>
                 <h1></h1>
                 <a href="#test2" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go to Lesson</a>
             </div>
+            
             <div id="test2" class="col s12">
                 Video 1
                 <h1></h1>
+                
                 <a href="#test1" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go Back</a>
             </div>
             <div id="test3" class="col s12">Test 3</div>

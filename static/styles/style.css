@@ -75,3 +75,26 @@ a.back {
 .tabs .indicator {
     height: 0px;
 }
+#note-container {
+    height: 100px;
+    width: 30px;
+    float: left;
+}
+
+.note-label {   
+    height: 19px;   
+    width:100%;  
+    font-size:small;
+    margin-bottom: 1px;
+}
+
+#sequencer {
+    margin-left: 30px;
+}
+
+#main-container {
+    width: 80%;
+    height: 200px;
+    margin: auto;
+    padding: 10px;
+  }
