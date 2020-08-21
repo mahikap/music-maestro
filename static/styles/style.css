@@ -1,13 +1,80 @@
 body {
-    font-family: helvetica, arial, sans-serif;
-    margin: 2em;
+    margin: 0;
+}
+.start-button {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
-h1 {
-    font-style: italic;
-    color: #373fff;
+h4 {
+    padding-top: 10px;
 }
 
+.collection {
+    border: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.collection.with-header .collection-item {
+    color: black;
+    line-height: 4.0rem;
+}
+
+nav .brand-logo {
+    height: 45px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-small, .btn-floating, .dropdown-content, .collapsible, .sidenav {
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0), 0 0px 0px 0px rgba(0,0,0,0), 0 0px 0px 0 rgba(0,0,0,0);
+}
+
+.locked {
+    margin-top: 1.2rem;
+    padding-right: 12px;
+}
+
+.tabs {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #eeeeee;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color:#eeeeee;
+}
+.tabs .tab a {
+    color: darkslategray;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: #e8eaf6;
+    color: black;
+    outline: none;
+    border: none;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: #e8eaf6;
+    color: black;
+}
+.tabs .tab.disabled a, .tabs .tab.disabled a:hover {
+    color: lightgrey;
+    cursor: default;
+}
+
+a.back {
+    color: darkgray;
+}
+
+.row .col {
+    padding-left: 0;
+}
+
+.tabs .indicator {
+    height: 0px;
+}
 #note-container {
     height: 100px;
     width: 30px;
@@ -27,7 +94,7 @@ h1 {
 
 #main-container {
     width: 80%;
-    height: 200px;
+    height: 690px;
     margin: auto;
     padding: 10px;
   }

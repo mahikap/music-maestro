@@ -10,7 +10,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/lessons')
+def lessons():
+    return render_template('lessons.html')
 
+@app.route('/lessons/lesson_beginner_1')
+def lesson_1():
+    return render_template('lesson_1.html')
 
 
 if __name__ == "__main__":

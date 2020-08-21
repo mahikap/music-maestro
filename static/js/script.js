@@ -128,7 +128,7 @@ async function setup() {
 }
 
 function startPitch(stream, audioContext) {
-    pitch = ml5.pitchDetection('static/js/model', audioContext , stream, modelLoaded);
+    pitch = ml5.pitchDetection('../static/js/model', audioContext , stream, modelLoaded);
 }
 
 function modelLoaded() {
@@ -172,4 +172,16 @@ function getSequencerRow(freq) {
     midiNum = freqToMidi(freq);
     current = Tonal.Midi.midiToNoteName(midiNum);
     return sequencerRows.indexOf(current)
+}
+
+
+// Lesson Sections
+var el = document.querySelector('.tabs');
+var instance = M.Tabs.init(el, {});
+
+document.getElementById("tabs-button").onclick = () => { 
+    console.log("here")
+    var el = document.querySelector('.tabs');
+    var instance = M.Tabs.init(el, {});
+    instance.updateTabIndicator();
 }
