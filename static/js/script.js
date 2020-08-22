@@ -15,7 +15,7 @@ for (note of sequencerRows){
 }
 
 let sequencer = new Nexus.Sequencer('#sequencer', {
-    columns: 32,
+    columns: 6,
     rows: sequencerRows.length,
     mode: 'toggle',
     size: [600, 680]
@@ -35,36 +35,39 @@ document.getElementById("generate-melody").onclick = async () => {
     await rnnLoaded;
     let seed = {
         notes: [
-        { pitch: 60, startTime: 0.0, endTime: 0.5 },
-        { pitch: 64, startTime: 0.5, endTime: 1.0 },
-        { pitch: 63, startTime: 1.0, endTime: 1.5 },
-        { pitch: 62, startTime: 1.5, endTime: 2.0 }
+        { pitch: 60, startTime: 0.0, endTime: 1.0 },
+        { pitch: 64, startTime: 1.0, endTime: 2.0 },
+        { pitch: 63, startTime: 2.0, endTime: 3.0 },
+        { pitch: 62, startTime: 3.0, endTime: 4.0 }
         ],
-        tempos: [{
-        time: 0, 
-        qpm: 120
-        }],
-        totalTime: 2
+        // To enable random melody, uncomment the code below
+        // tempos: [{
+        // time: 0, 
+        // qpm: 120
+        // }],
+        totalTime: 4
     };
 
     var rnn_steps = 45;
     var rnn_temp = 1.5;
     var chord_prog = ['C'];
-    const qns = mm.sequences.quantizeNoteSequence(seed, 4);
+    // const qns = mm.sequences.quantizeNoteSequence(seed, 4);
 
     // melodyRnn
     //     .continueSequence(qns, rnn_steps, rnn_temp, chord_prog)
     //     .then((sample) => player.start(sample));
 
-    let result = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog)
+    // let result = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog)
 
     // let combined = core.sequences.concatenate([seed, result]);
     
     sequencer.matrix.populate.all([0]);
-    console.log(qns.notes);
-    console.log(result.notes);
+    // console.log(qns.notes);
+    // console.log(result.notes);
+    
+    ////////////////******************************************************* */
     let column = 0;
-    for (let note of result.notes) {
+    for (let note of seed.notes) {
         midiNum = freqToMidi(note.pitch);
         current = Tonal.Midi.midiToNoteName(midiNum)
         let row = getSequencerRow(Tone.Frequency(note.pitch, "midi").toFrequency()) 
@@ -73,24 +76,8 @@ document.getElementById("generate-melody").onclick = async () => {
             column +=1;
         }
     }
-    console.log(result);
-    // viz = new mm.Visualizer({...result, totalTime:, document.getElementById('canvas'));
-    // viz.sequenceIsQuantized = true;
-    songs = result;
-    // vizPlayer = new mm.Player(false, {
-    //     run: (note) => {
-    //         console.log(note);
-    //         viz.redraw(note)
-    //     },
-    //     stop: () => {console.log('done');}
-    //   });
 
-    // vizPlayer.start(result);
-    // // player.start(seed);
-    // setTimeout(function() {
-    //   player.stop();
-    // }, 3000);
-    //player.stop();
+    songs = seed;
 };
 
 document.getElementById("practice").onclick = async () => {
@@ -104,15 +91,16 @@ document.getElementById("practice").onclick = async () => {
         current_col += 1;
         sequencer.next();
     },
-    stop: () => {console.log('done');}
+    stop: () => {
+        console.log(document.getElementById('lesson1b').classList);
+        document.getElementById('lesson1b').classList.remove('disabled');
+        var el = document.querySelector('.tabs');
+        var instance = M.Tabs.init(el, {});
+        instance.select('test2');
+    }
     });
 
     vizPlayer.start(songs);
-    // player.start(seed);
-    // setTimeout(function() {
-    //   player.stop();
-    // }, 3000);
-    //player.stop();
 };
 
 // Pitch Detection
