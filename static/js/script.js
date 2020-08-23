@@ -4,6 +4,8 @@ var melodyRnn = new music_rnn.MusicRNN(
 let rnnLoaded = melodyRnn.initialize();
 var player = new mm.Player();
 
+
+//testing
 let sequencerRows = ['B5', 'Bb5', 'A5', 'Ab5', 'G5', 'Gb5', 'F5', 'E5', 'Eb5', 'D5', 'Db5', 'C5','B4', 'Bb4', 'A4', 'Ab4', 'G4', 'Gb4', 'F4', 'E4', 'Eb4', 'D4', 'Db4', 'C4','B3', 'Bb3', 'A3', 'Ab3', 'G3', 'Gb3', 'F3', 'E3', 'Eb3', 'D3', 'Db3', 'C3'];
 let main_container = document.getElementById("note-container")
 var note;
