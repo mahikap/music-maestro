@@ -30,33 +30,86 @@ let songs = undefined;
 let current_col;
 let prev;
 
+
+
+
 document.getElementById("generate-melody").onclick = async () => {
     console.log(Tone.Frequency(50, "midi").toFrequency());
     await rnnLoaded;
     let seed = {
         notes: [
-        { pitch: 60, startTime: 0.0, endTime: 0.5 },
-        { pitch: 64, startTime: 0.5, endTime: 1.0 },
-        { pitch: 63, startTime: 1.0, endTime: 1.5 },
-        { pitch: 62, startTime: 1.5, endTime: 2.0 }
+        { pitch: 60, startTime: 0.0, endTime: 2.0 },
+        { pitch: 60, startTime: 2.0, endTime: 3.0 },
+        // { pitch: 60, startTime: 2.0, endTime: 3.0 },
+        // { pitch: 60, startTime: 3.0, endTime: 4.0 }
         ],
         tempos: [{
         time: 0, 
         qpm: 120
         }],
-        totalTime: 2
+        totalTime: 3.0
     };
-
-    var rnn_steps = 45;
-    var rnn_temp = 1.5;
+    // let seed={
+    //     ticksPerQuarter: 220,
+    //     totalTime: 28.5,
+    //     timeSignatures: [
+    //       {
+    //         time: 0,
+    //         numerator: 4,
+    //         denominator: 4
+    //       }
+    //     ],
+    //     tempos: [
+    //       {
+    //         time: 0,
+    //         qpm: 120
+    //       }
+    //     ],
+    //     notes: [
+    //       { pitch: 'Gb4', startTime: 0, endTime: 1 },
+    //       { pitch: 'F4', startTime: 1, endTime: 3.5 },
+    //       { pitch: 'Ab4', startTime: 3.5, endTime: 4 },
+    //       { pitch: 'C5', startTime: 4, endTime: 4.5 },
+    //       { pitch: 'Eb5', startTime: 4.5, endTime: 5 },
+    //       { pitch: 'Gb5', startTime: 5, endTime: 6 },
+    //       { pitch: 'F5', startTime: 6, endTime: 7 },
+    //       { pitch: 'E5', startTime: 7, endTime: 8 },
+    //       { pitch: 'Eb5', startTime: 8, endTime: 8.5 },
+    //       { pitch: 'C5', startTime: 8.5, endTime: 9 },
+    //       { pitch: 'G4', startTime: 9, endTime: 11.5 },
+    //       { pitch: 'F4', startTime: 11.5, endTime: 12 },
+    //       { pitch: 'Ab4', startTime: 12, endTime: 12.5 },
+    //       { pitch: 'C5', startTime: 12.5, endTime: 13 },
+    //       { pitch: 'Eb5', startTime: 13, endTime: 14 },
+    //       { pitch: 'D5', startTime: 14, endTime: 15 },
+    //       { pitch: 'Db5', startTime: 15, endTime: 16 },
+    //       { pitch: 'C5', startTime: 16, endTime: 16.5 },
+    //       { pitch: 'F5', startTime: 16.5, endTime: 17 },
+    //       { pitch: 'F4', startTime: 17, endTime: 19.5 },
+    //       { pitch: 'G4', startTime: 19.5, endTime: 20 },
+    //       { pitch: 'Ab4', startTime: 20, endTime: 20.5 },
+    //       { pitch: 'C5', startTime: 20.5, endTime: 21 },
+    //       { pitch: 'Eb5', startTime: 21, endTime: 21.5 },
+    //       { pitch: 'C5', startTime: 21.5, endTime: 22 },
+    //       { pitch: 'Eb5', startTime: 22, endTime: 22.5 },
+    //       { pitch: 'C5', startTime: 22.5, endTime: 24.5 },
+    //       { pitch: 'Eb5', startTime: 24.5, endTime: 25.5 },
+    //       { pitch: 'G4', startTime: 25.5, endTime: 28.5 }
+    //     ]
+    //   }
+    var rnn_steps = 124; // (time span detection: rnn_steps-10)
+    var rnn_temp = 0;
     var chord_prog = ['C'];
-    const qns = mm.sequences.quantizeNoteSequence(seed, 4);
+    // const qns = mm.sequences.quantizeNoteSequence(seed, 4);
+    const qns = mm.sequences.quantizeNoteSequence(seed, 1);
 
     // melodyRnn
     //     .continueSequence(qns, rnn_steps, rnn_temp, chord_prog)
     //     .then((sample) => player.start(sample));
 
-    let result = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog)
+    let result = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog);
+    // const improvisedMelody = await melodyRnn.continueSequence(qns, 60, 1.1, ['Bm', 'Bbm', 'Gb7', 'F7', 'Ab', 'Ab7', 'G7', 'Gb7', 'F7', 'Bb7', 'Eb7', 'AM7'])
+
 
     // let combined = core.sequences.concatenate([seed, result]);
     
