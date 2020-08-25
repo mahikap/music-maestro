@@ -64,6 +64,12 @@ nav .brand-logo {
     cursor: default;
 }
 
+.test-button {
+    position: absolute;
+    margin-left: 100;
+    margin-top: 0.9rem;
+}
+
 a.back {
     color: darkgray;
 }

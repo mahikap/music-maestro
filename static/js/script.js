@@ -23,25 +23,28 @@ async function generateNotes() {
     await rnnLoaded;
     let seed = {
         notes: [
-        { pitch: 60, startTime: 0.0, endTime: 2.0 },
-        { pitch: 60, startTime: 2.0, endTime: 3.0 },
-        // { pitch: 60, startTime: 2.0, endTime: 3.0 },
-        // { pitch: 60, startTime: 3.0, endTime: 4.0 }
+            { pitch: 60, startTime: 0.0, endTime: 1.0 },
+            { pitch: 62, startTime: 1.0, endTime: 2.0 },
+            { pitch: 64, startTime: 2.0, endTime: 3.0 },
+            { pitch: 64, startTime: 3.0, endTime: 4.0 },
+            { pitch: 62, startTime: 4.0, endTime: 5.0 },
+            { pitch: 60, startTime: 5.0, endTime: 6.0 },
         ],
-        tempos: [{
-        time: 0, 
-        qpm: 120
-        }],
-        totalTime: 3.0
+        // tempos: [{ // Only required for continueSequence
+        //     time: 0, 
+        //     qpm: 120
+        // }],
+        totalTime: 6.0
     };
     
-    var rnn_steps = 124; // (time span detection: rnn_steps-10)
-    var rnn_temp = 0;
-    var chord_prog = ['C'];
-    const qns = mm.sequences.quantizeNoteSequence(seed, 1);
+    // var rnn_steps = 124; // (time span detection: rnn_steps-10)
+    // var rnn_temp = 0;
+    // var chord_prog = ['C'];
+    // const qns = mm.sequences.quantizeNoteSequence(seed, 1);
 
 
-    notes = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog);
+    // notes = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog);
+    notes = seed;
     setSequencerNotes();
 };
 
@@ -164,7 +167,7 @@ function setupSequencer(){
     }
 
     sequencer = new Nexus.Sequencer('#sequencer', {
-        columns: 32,
+        columns: 6,
         rows: sequencerRows.length,
         mode: 'toggle',
         size: [600, 680]
@@ -196,8 +199,10 @@ var el = document.querySelector('.tabs');
 var instance = M.Tabs.init(el, {});
 
 document.getElementById("tabs-button").onclick = () => { 
-    console.log("here")
+    console.log("changed tab")
     var el = document.querySelector('.tabs');
     var instance = M.Tabs.init(el, {});
     instance.updateTabIndicator();
 }
+
+
