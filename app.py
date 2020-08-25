@@ -18,6 +18,10 @@ def lessons():
 def lesson_1():
     return render_template('lesson_1.html')
 
+@app.route('/lessons/test_1')
+def test_1():
+    return render_template('test_1.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

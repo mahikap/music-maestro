@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@2.0.13/dist/NexusUI.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
+
+    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.19.0/es6/music_rnn.js"></script> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js"></script>
+    
+    <!-- Tone Library recommended in Bitrate slack channel for music conversations-->
+    <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
+    <title>Hello!</title>
+
+    <!-- Materialize UI CSS and JS file-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!--Import Google Fonts-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+        
+            
+    <!-- import the webpage's stylesheet -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+    <script src="{{ url_for('static',filename='js/test.js') }}" defer></script>
+
+</head>
+
+<body>
+    <nav>
+        <div style="padding-bottom: 20px;" class="nav-wrapper indigo lighten-3">
+            <a href="{{ url_for('index') }}"> <img  src="{{ url_for('static',filename='imgs/maestro2.png') }}"  class="brand-logo"></img></a> 
+            <ul id="nav-mobile" class="right hide-on-med-and-down"> 
+            <li><a href="./">Sign In</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h2></h2>
+    
+    <div class="container">
+        <a class="back col s12" href="{{ url_for('lessons') }}"><i class="material-icons" style="vertical-align: top">keyboard_arrow_left</i>Back to Lessons</a>
+        
+        <h4 style="font-family: 'Nanum Myeongjo', serif;">Test 1 </h4>
+    
+
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab col s3"><a class="active" href="#instructions">Instructions</a></li>
+                    <li id="test-tab" class="tab col s3 disabled"><a href="#test">Test</a></li>
+                </ul>
+            </div>
+            
+            <div id="instructions" class="col s12">
+                <h1></h1>
+                It's time for your first test! The format will be the same as your practice sessions. <br>
+                You will need to achieve a score of at least 80% to move on to the next module.
+                But fear not, you may attempt the test as many times as you like. <br>
+                Note: Each time you attempt the test, you will receive a different melody of notes.
+                <h1></h1>
+                <a href="#test" id="test-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5 test-button">Begin Test</a>
+            </div>
+            
+            <div id="test" class="col s12">
+                
+                <h1></h1>
+
+                <button id="stop" style="display:none">Stop</button>
+                <button id="practice">Start Practice</button>
+
+                <p id='status'>Loading Model...</p>
+                
+                <p>Current Note: <span id="currentNote"></span> </p>
+                <p>Current Score: <span id="currentScore"></span> </p>
+                <div id="main-container">
+                    <div id="note-container"></div>
+                    <div id="sequencer"></div>
+                </div>
+                <h1></h1>
+                
+            </div>
+
+        </div>
+    </div>
+
+</body>
