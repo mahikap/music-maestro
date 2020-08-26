@@ -33,6 +33,16 @@
     <script src="{{ url_for('static',filename='js/formatting.js') }}" defer></script>
 
 </head>
+<script>
+    function lesson_1_score(){
+        var score1 = parseInt(localStorage.getItem('#test1-score')) || 0 
+        var score2 = parseInt(localStorage.getItem('#test4-score')) || 0
+        return score1 + score2;
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("lesson1-score").textContent = `${lesson_1_score()}/6`
+    });
+</script>
 
 <body>
     <nav>
@@ -63,7 +73,7 @@
                     Begin with mastering the C D E notes. 
                     These are the first three notes that any vocalist learns. <br>
                     In any context, humming the C D E notes will form a basis for other notes.
-                    <span class="score-beg" style="font-family:'Nanum Myeongjo',sans-serif;float:right;color:lightslategray;font-size:20;">0/6</span>
+                    <span id="lesson1-score" class="score-beg" style="font-family:'Nanum Myeongjo',sans-serif;float:right;color:lightslategray;font-size:20;">0/6</span>
                 </span></div>
             </li>
             
