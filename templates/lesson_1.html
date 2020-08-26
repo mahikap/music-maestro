@@ -33,7 +33,9 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     
     <!-- import the webpage's javascript file -->
+    <script src="{{ url_for('static',filename='js/sequencer.js') }}" defer></script>
     <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+
 
 </head>
 
@@ -60,7 +62,7 @@
                     <li class="tab col s3"><a class="active" href="#test1">Practice I</a></li>
                     <li class="tab col s3"><a href="#test2">Video: Breathing</a></li>
                     <li class="tab col s3 disabled"><a href="#test3">Video: C-ing the note</a></li>
-                    <li class="tab col s3 disabled"><a href="#test4">Practice II</a></li>
+                    <li class="tab col s3"><a href="#test4">Practice II</a></li>
                     <li class="tab col s3 disabled"><a href="#test5">Practice III</a></li>
                 </ul>
             </div>
@@ -74,9 +76,9 @@
                 
                 <p>Current Note: <span id="currentNote"></span> </p>
                 <p>Current Score: <span id="currentScore"></span> </p>
-                <div id="main-container">
-                    <div id="note-container"></div>
-                    <div id="sequencer"></div>
+                <div class="main-container" id="main-container">
+                    <div class="note-container" id="note-container"></div>
+                    <div class="sequencer" id="sequencer"></div>
                 </div>
                 <h1></h1>
                 <a href="#test2" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go to Lesson</a>
@@ -88,8 +90,20 @@
                 
                 <a href="#test1" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go Back</a>
             </div>
-            <div id="test3" class="col s12">Test 3</div>
-            <div id="test4" class="col s12">Test 4</div>
+            <div id="test3" class="col s12"></div>
+            <div id="test4" class="col s12">
+                <button id="stop-2" style="display:none">Stop</button>
+                <button id="practice-2">Start Practice</button>
+
+                <p id='status'>Loading Model...</p>
+                
+                <p>Current Note: <span id="currentNote"></span> </p>
+                <p>Current Score: <span id="currentScore"></span> </p>
+                <div class="main-container" id="main-container-2">
+                    <div class="note-container" id="note-container-2"></div>
+                    <div class="sequencer" id="sequencer-2"></div>
+                </div>
+            </div>
             <div id="test5" class="col s12">Test 5</div>
         </div>
     </div>
