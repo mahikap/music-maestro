@@ -8,6 +8,8 @@ var vizPlayer = new mm.Player();
 
 //globals
 let sequencers = new Map();
+let buttons = new Map();
+let current_tab;
 let notes = undefined;
 let current_col;
 let prev;
@@ -18,6 +20,10 @@ let runPitch = false;
 
 sequencers.set('test1', new Sequencer('note-container', 'sequencer', 'cell1'));
 sequencers.set('test4', new Sequencer('note-container-2', 'sequencer-2', 'cell2'));
+
+buttons.set('test1', {"practice": "practice", "stop": "stop"})
+buttons.set('test4', {"practice": "practice-2", "stop": "stop-2"})
+
 let sequencer;
 generateNotes(sequencers.get('test1'));
 generateNotes(sequencers.get('test4'));
@@ -43,16 +49,17 @@ async function generateNotes(sequencer) {
     var chord_prog = ['C'];
     const qns = mm.sequences.quantizeNoteSequence(seed, 1);
 
-
     notes = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog);
     sequencer.setSequencerNotes(notes);
 };
 
 document.getElementById("practice").onclick = () => {;
+    current_tab = "test1";
     startPractice("test1")
 }
 
 document.getElementById("practice-2").onclick = () => {
+    current_tab = "test4";
     startPractice("test4")
 }
 
@@ -149,8 +156,8 @@ function sequencerStop(){
     prev = null;
     runPitch = false;
     score = 0;
-    toggleButton("stop")
-    toggleButton("practice")
+    toggleButton(buttons.get(current_tab)["stop"]);
+    toggleButton(buttons.get(current_tab)["practice"]);
 }
 
 // Lesson Sections
@@ -158,7 +165,7 @@ var el = document.querySelector('.tabs');
 var instance = M.Tabs.init(el, {});
 
 document.getElementById("tabs-button").onclick = () => { 
-    console.log("here")
+    console.log("changed tab")
     var el = document.querySelector('.tabs');
     var instance = M.Tabs.init(el, {});
     instance.updateTabIndicator();
