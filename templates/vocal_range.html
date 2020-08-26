@@ -32,7 +32,7 @@
       <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
       
       <!-- import the webpage's javascript file -->
-      <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+      <script src="{{ url_for('static',filename='js/vocal_range.js') }}" defer></script>
   </head>  
   <body>
     <nav>
@@ -44,17 +44,19 @@
       </div>
     </nav>
     <div class="container">
-      <blockquote style="border-left: 5px solid black;">
-          <h2 style="font-family: 'Nanum Myeongjo', serif;">
-            maes &#183; stro
-          </h2>
-          <p style="font-family: 'Roboto', sans-serif; font-style: italic;">
-              a distinguished musician, especially a conductor of classical music.
-          </p>
-      </blockquote>
-      
-      <a href="{{ url_for('lessons') }}" class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="get-started">Get Started</a>
-      <a href="{{ url_for('vocal_range') }}" class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="get-started">Find my vocal Range!</a>
+        <h1></h1>
+
+        <button id="stop" style="display:none">Stop</button>
+        <button id="practice">Start</button>
+
+        <p id='status'>Loading Model...</p>
+        
+        <p>Current Note: <span id="currentNote"></span> </p>
+        <p>Current Score: <span id="currentScore"></span> </p>
+        <div id="main-container">
+            <div id="note-container"></div>
+            <div id="sequencer"></div>
+        </div>
     </div>
 
    
