@@ -32,7 +32,7 @@
       <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
       
       <!-- import the webpage's javascript file -->
-      <script src="{{ url_for('static',filename='js/vocal_range.js') }}" defer></script>
+      <!-- <script src="{{ url_for('static',filename='js/vocal_range.js') }}" defer></script> -->
   </head>  
   <body>
     <nav>
@@ -44,9 +44,47 @@
       </div>
     </nav>
     <div class="container">
-        <h1></h1>
+      <h1></h1>
+      <h3 style="font-family: 'Nanum Myeongjo', serif;"> Vocal Range </h3>
 
-        <button id="stop" style="display:none">Stop</button>
+      <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What is a vocal range? </h5>
+
+      <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;"> The broadest definition of "vocal range" is simply the span from the lowest to the highest note a particular voice can produce.
+        In the context of singing, vocalists describe the vocal range as the total span of "musically useful" pitches that a singer can produce. 
+        For example, a singer like Beyoncé has one of the most versatile vocal ranges, starting at a very low pitch of A2 and hitting a higher pitch of E6.
+      </p>
+
+      <p class="card-panel grey lighten-4" style="font-family: 'Roboto', sans-serif; margin-left: 30px;">  
+        <!-- <i style="vertical-align: bottom;" class="material-icons">star</i> -->
+        Note: When we write a pitch as A2, this is scientific pitch notation! The letter represents the pitch and the number represents the octave. 
+        The first 12 notes of a piano are the first octave, denoted as C1, D1, E1...
+      </p>
+      <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What are the types of vocal ranges? </h5>
+
+      <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;">
+          Though everyone’s range is specific to their voice, most vocal ranges are categorized within 4 basic voice types: 
+          <ul style="font-family: 'Roboto', sans-serif; margin-left: 60px; line-height:28px">
+            <li>Bass: the lowest male voice, E2 to E4. </li>
+            <li>Tenor: the highest male voice, B2 to A4, and possibly higher.</li>
+            <li>Alto: the lowest female voice, F3 to E5.</li>
+            <li>Soprano: the highest female voice, being able to sing C4 to C6, and possibly higher.</li>
+          </ul>
+          <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;"> This is best to visualize on a piano! </p>
+          <!-- <img class="materialboxed" width="650" src="{{ url_for('static',filename='imgs/range.png') }}"> -->
+          <img src="{{ url_for('static',filename='imgs/range.png') }}" class="center" alt="Vocal range visualized on a piano" width="700" style="margin-left: 30px; display: block; margin-left: auto; margin-right: auto;">
+      </p>
+
+      <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What is my vocal range? </h5>
+
+      <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;">
+        Knowing your vocal range will help you understand how high and low you can sing. 
+        It will also help you to learn where your weak spots are, and with advanced lessons, you will be able to expand your span of notes. 
+        <br><br>
+        Maestro will do a quick exercise to measure your vocal range. Please ensure that you have an Audio Input source and that your browser has permission to access your mic.
+        <br><br>
+        <a href="{{ url_for('vocal_range') }}" style="align-self: center;"class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5">Find my vocal Range!</a>
+      </p>
+        <!-- <button id="stop" style="display:none">Stop</button>
         <button id="practice">Start</button>
 
         <p id='status'>Loading Model...</p>
@@ -54,9 +92,9 @@
         <p>Current Note: <span id="currentNote"></span> </p>
         <p>Current Score: <span id="currentScore"></span> </p>
         <div id="main-container">
-            <div id="note-container"></div>
-            <div id="sequencer"></div>
-        </div>
+            <div id="note-container" style="position:absolute;"></div>
+            <div id="sequencer" style="margin-left:35px;"></div>
+        </div> -->
     </div>
 
    
