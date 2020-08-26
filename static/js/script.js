@@ -111,7 +111,7 @@ function getPitch() {
         if (frequency && current_note) {
             midiNum = freqToMidi(frequency);
             current = Tonal.Midi.midiToNoteName(midiNum)
-            select('#currentNote').html(current);
+            select(`#${current_tab}-currentNote`).html(current);
             if(prev) {
                 var row = sequencer.getSequencerRow(frequency)
                 if(prev[0] == current_col) {
@@ -122,7 +122,7 @@ function getPitch() {
                     if(midiNum == current_note.pitch && !detected){
                         detected = true;
                         score +=1;
-                        select('#currentScore').html(score);
+                        select(score_label()).html(score);
                     }
                 }
             }
@@ -152,12 +152,17 @@ function toggleButton(id){
 }
 
 function sequencerStop(){
+    localStorage.setItem(score_label(), score);
     current_col = 0;
     prev = null;
     runPitch = false;
     score = 0;
     toggleButton(buttons.get(current_tab)["stop"]);
     toggleButton(buttons.get(current_tab)["practice"]);
+}
+
+function score_label(){
+    return `#${current_tab}-score`
 }
 
 // Lesson Sections
