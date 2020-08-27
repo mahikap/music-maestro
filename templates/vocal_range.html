@@ -37,7 +37,7 @@
   <body>
     <nav>
       <div class="nav-wrapper indigo lighten-3">
-        <img src="{{ url_for('static',filename='imgs/maestro1.png') }}" href="#" class="brand-logo"></img>
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static',filename='imgs/maestro2.png') }}" class="brand-logo"></img></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="./">Sign In</a></li>
         </ul>
@@ -50,7 +50,7 @@
       <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What is a vocal range? </h5>
 
       <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;"> The broadest definition of "vocal range" is simply the span from the lowest to the highest note a particular voice can produce.
-        In the context of singing, vocalists describe the vocal range as the total span of "musically useful" pitches that a singer can produce. 
+        In the context of singing, vocalists describe the vocal range as all the "musically useful" pitches that a person can sing. 
         For example, a singer like Beyoncé has one of the most versatile vocal ranges, starting at a very low pitch of A2 and hitting a higher pitch of E6.
       </p>
 
@@ -82,19 +82,8 @@
         <br><br>
         Maestro will do a quick exercise to measure your vocal range. Please ensure that you have an Audio Input source and that your browser has permission to access your mic.
         <br><br>
-        <a href="{{ url_for('vocal_range') }}" style="align-self: center;"class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5">Find my vocal Range!</a>
+        <a href="{{ url_for('vocal_range_lowest') }}" class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5">Find my vocal Range!</a>
       </p>
-        <!-- <button id="stop" style="display:none">Stop</button>
-        <button id="practice">Start</button>
-
-        <p id='status'>Loading Model...</p>
-        
-        <p>Current Note: <span id="currentNote"></span> </p>
-        <p>Current Score: <span id="currentScore"></span> </p>
-        <div id="main-container">
-            <div id="note-container" style="position:absolute;"></div>
-            <div id="sequencer" style="margin-left:35px;"></div>
-        </div> -->
     </div>
 
    

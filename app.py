@@ -14,6 +14,10 @@ def index():
 def vocal_range():
     return render_template('vocal_range.html')
 
+@app.route('/vocal_range_lowest')
+def vocal_range_lowest():
+    return render_template('vocal_range_lowest.html')
+
 @app.route('/lessons')
 def lessons():
     return render_template('lessons.html')
