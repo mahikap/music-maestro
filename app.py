@@ -18,6 +18,10 @@ def vocal_range():
 def vocal_range_lowest():
     return render_template('vocal_range_lowest.html')
 
+@app.route('/vocal_range_highest')
+def vocal_range_highest():
+    return render_template('vocal_range_highest.html')
+
 @app.route('/lessons')
 def lessons():
     return render_template('lessons.html')

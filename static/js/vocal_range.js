@@ -17,41 +17,65 @@ let current_note;
 let detected;
 let runPitch = false;
 let lowestNote = 60;
+let highestNote = 60;
+let isHigh = false;
+
+var title = document.getElementById('vocal-range-title').innerHTML;
+if (title.includes('highest')) {
+    console.log("On highest pitch page")
+    isHigh = true;
+    sequencerRows = sequencerRowsHigh.reverse();
+    // Remove display for next button
+    var nxt = document.getElementById("next-button");
+    nxt.style.display === "none"
+    document.getElementById('pitch-result').innerHTML = "";
+}
 
 setupSequencer();
 generateNotes();
 
 async function generateNotes() {
     await rnnLoaded;
-    let seed = {
-        notes: [
-            { pitch: 60, startTime: 0.0, endTime: 2.0 },
-        ],
-        totalTime: 48.0
-    };
-    for (var i = 59, j = 2.0; i >= 36; i--, j+=2.0) {
-        seed.notes.push({pitch: i, startTime: j, endTime: j+2.0})
+    var seed;
+    if (isHigh) {
+        seed = {
+            notes: [
+                { pitch: 60, startTime: 0.0, endTime: 2.0 },
+            ],
+            totalTime: 48.0
+        };
+        for (var i = 61, j = 2.0; i <= 86; i++, j+=2.0) {
+            seed.notes.push({pitch: i, startTime: j, endTime: j+2.0})
+        }
+    } else {
+        seed = {
+            notes: [
+                { pitch: 60, startTime: 0.0, endTime: 2.0 },
+            ],
+            totalTime: 48.0
+        };
+        for (var i = 59, j = 2.0; i >= 36; i--, j+=2.0) {
+            seed.notes.push({pitch: i, startTime: j, endTime: j+2.0})
+        }
     }
-    //     seed = {
-    //         notes: [
-    //             { pitch: 60, startTime: 0.0, endTime: 2.0 },
-    //         ],
-    //         totalTime: 48.0
-    //     };
-    //     for (var i = 61, j = 2.0; i >= 36; i++, j+=2.0) {
-    //         seed.notes.push({pitch: i, startTime: j, endTime: j+2.0})
-    //     }
+    
+    
     notes = seed;
     setSequencerNotes();
 };
+
+document.getElementById("next-button").onclick = async () => {
+    isHigh = true;
+}
 
 document.getElementById("practice").onclick = async () => {
     sequencerStop();
     setSequencerNotes();
     sequencer.stepper = new Nexus.Counter(0,sequencer.columns);
     runPitch = true;
+    if (isHigh) {row = sequencerRowsHigh.length - 1;}
+    else {row = 0;}
     setup();
-    row = 0;
     vizPlayer = new mm.Player(false, {
     run: (note) => {
         current_col = 0;
@@ -59,15 +83,25 @@ document.getElementById("practice").onclick = async () => {
         detected = false;
         console.log("setting false");
         current_note = note;
-        sequencer.matrix.set.cell(0, row, 1) 
-        if(row > 0){
-            sequencer.matrix.set.cell(0, row-1, 0)
+        if (isHigh) {
+            sequencer.matrix.set.cell(0, row, 1)
+            if (row < (sequencerRowsHigh.length - 1)) {
+                sequencer.matrix.set.cell(0, row+1, 0)
+            }
+            row -= 1
+            console.log(row)
+        } else{
+            sequencer.matrix.set.cell(0, row, 1) 
+            if(row > 0){
+                sequencer.matrix.set.cell(0, row-1, 0)
+            }
+            row += 1;
         }
-        row += 1;
+        
     },
     stop: () => {
         sequencerStop();
-        lowestPitchResult();
+        pitchResult();
     }
     });
 
@@ -98,7 +132,12 @@ function getPitch() {
     pitch.getPitch(function(err, frequency) {
         if (frequency && current_note) {
             midiNum = freqToMidi(frequency);
-            if (midiNum <= lowestNote && (midiNum - 8) < lowestNote) {
+            if (isHigh & midiNum >= highestNote) {
+                current = Tonal.Midi.midiToNoteName(midiNum)
+                highestNote = midiNum;
+                select('#currentNote').html(current);
+            }
+            if (!isHigh && midiNum <= lowestNote && (midiNum - 8) < lowestNote) {
                 current = Tonal.Midi.midiToNoteName(midiNum)
                 lowestNote = midiNum;
                 select('#currentNote').html(current);
@@ -121,7 +160,7 @@ function getPitch() {
 document.getElementById("stop").onclick = async () => {
     sequencerStop();
     vizPlayer.stop();
-    lowestPitchResult();
+    pitchResult();
 };
 
 function setDetected(col, row, on) {
@@ -144,7 +183,7 @@ function toggleButton(id){
 function getSequencerRow(freq) {
     midiNum = freqToMidi(freq);
     current = Tonal.Midi.midiToNoteName(midiNum);
-    console.log(`midi ${midiNum} note ${current} row ${sequencerRows.indexOf(current)} col ${current_col}`)
+    // console.log(`midi ${midiNum} note ${current} row ${sequencerRows.indexOf(current)} col ${current_col}`)
     return sequencerRows.indexOf(current)
 }
 
@@ -179,33 +218,41 @@ function setupSequencer(){
         item.id = `cell-${num}`;
         num +=1;
      }); 
-     console.log("done");
+     console.log("done setup");
 }
 
 function setSequencerNotes(){
-
     sequencer.matrix.populate.all([0]);
     let column = 0;
     for (let note of notes.notes) {
         midiNum = freqToMidi(note.pitch);
         current = Tonal.Midi.midiToNoteName(midiNum)
         let row = getSequencerRow(Tone.Frequency(note.pitch, "midi").toFrequency())
-        sequencer.matrix.set.cell(column, 0, 1);
-        
-        // if (row >= 0) {
-        //     sequencer.matrix.set.cell(column, row, 1);
-        //     column +=1;
-        // }
+        if (isHigh) {
+            sequencer.matrix.set.cell(column, sequencerRowsHigh.length-1, 1);
+        } else {
+            sequencer.matrix.set.cell(column, 0, 1);
+        }
     }
-    // setDetected(0,0,true);
 }
 
-function lowestPitchResult(){
-    lowestPitch = Tonal.Midi.midiToNoteName(lowestNote)
-    document.getElementById('lowest-pitch-result').innerHTML = 
-        `The lowest pitch in your current vocal range is ${lowestPitch}.`;
-    var hp_test = document.getElementById("highest-pitch-test");
-    if (hp_test.style.display === "none") {
-        hp_test.style.display = "block";
+function pitchResult(){
+    if (isHigh) {
+        highestPitch = Tonal.Midi.midiToNoteName(highestNote)
+        document.getElementById('pitch-result').innerHTML = 
+            `The highest pitch in your current vocal range is ${highestPitch}.`;
+        // Store
+        localStorage.setItem("highestNote", highestNote);
+    } else {
+        lowestPitch = Tonal.Midi.midiToNoteName(lowestNote)
+        document.getElementById('pitch-result').innerHTML = 
+            `The lowest pitch in your current vocal range is ${lowestPitch}.`;
+        // Store
+        localStorage.setItem("lowestNote", lowestNote);
+        var nxt = document.getElementById("next-button");
+        if (nxt.style.display === "none") {
+            nxt.style.display = "block";
+        }   
     }
+    
 }

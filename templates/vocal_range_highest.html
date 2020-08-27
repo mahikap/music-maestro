@@ -48,10 +48,10 @@
       <h3 style="font-family: 'Nanum Myeongjo', serif;"> Vocal Range </h3>
       <h1></h1>
 
-      <h5 id="vocal-range-title" style="font-family: 'Nanum Myeongjo', sans-serif;"> Finding the lowest pitch </h5>
+      <h5 id="vocal-range-title" style="font-family: 'Nanum Myeongjo', sans-serif;"> Finding the highest pitch </h5>
 
       <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;">
-        Starting from C4, you will hear the sound of each note until C2.
+        Starting from C4, you will hear the sound of each note until C6.
         Once you click start, try to sing along, with "Ah"s or "Hm"s and match the detected note with the played note as much as possible.<br><br>
         <img src="{{ url_for('static',filename='imgs/colours.png') }}" width=250 href="#"></img> <br>
         The teal coloured indicator is the pitch which is being tested. The purple coloured indicator is the pitch which you are singing.
@@ -60,7 +60,7 @@
       <button style="display:none; margin-left: 30px;" id="stop" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Stop</button>
       <button style="margin-left: 30px;" class="waves-effect waves-light btn-flat btn-large indigo lighten-5" id="practice">Start</button>
       
-      <p style="margin-left: 30px;">Lowest Note: <span id="currentNote"></span> </p>
+      <p style="margin-left: 30px;">Highest Note: <span id="currentNote"></span> </p>
       <p style="margin-left: 30px; display: none;">Current Score: <span id="currentScore"></span> </p>
       <div style="margin-left: 30px;" id="main-container">
           <div id="note-container" style="position:absolute; font-family: 'Nanum Myeongjo', sans-serif;"></div>
@@ -69,31 +69,10 @@
       <h3></h3>
         <div>
           <h6 id="pitch-result" style="font-family: 'Nanum Myeongjo', sans-serif; margin-left: 30px;"> </h6> <br>
-          <a href="{{ url_for('vocal_range_highest') }}"><button id="next-button" style="margin-left: 30px; display: none;" class="waves-effect waves-light btn-flat btn-large indigo lighten-5" id="practice">Next</button> </a>
+          <a href="{{ url_for('index') }}"><button id="next-button" style="margin-left: 30px; display: none;" class="waves-effect waves-light btn-flat btn-large indigo lighten-5" id="practice">Next</button> </a>
         </div>
           
       <h1></h1>
-      
-      <!-- <div id="highest-pitch-test" style="display: none; margin-top: 80px;">
-        <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> Finding the highest pitch </h5>
-
-        <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;">
-          Starting from C4, you will hear the sound of each note until C6.
-          Once you click start, try to sing along, with "Ah"s or "Hm"s and match the detected note with the played note as much as possible.<br><br>
-          <img src="{{ url_for('static',filename='imgs/colours.png') }}" width=250 href="#"></img> <br>
-          The teal coloured indicator is the pitch which is being tested. The purple coloured indicator is the pitch which you are singing.
-        </p>
-
-        <button style="margin-left: 30px;" id="stop" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Stop</button>
-        <button style="margin-left: 30px;" id="practice" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Start</button>
-
-        <p style="margin-left: 30px;">Lowest Note: <span id="currentNoteHigh"></span> </p>
-        <p style="margin-left: 30px; display: none;">Current Score: <span id="currentScoreHigh"></span> </p>
-        <div style="margin-left: 30px;" id="main-container">
-            <div id="note-container-high" style="position:absolute; font-family: 'Nanum Myeongjo', sans-serif;"></div>
-            <div id="sequencer-high" style="margin-left:35px;"></div>
-        </div>
-      </div> -->
 
     </div>
 
