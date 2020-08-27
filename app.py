@@ -10,6 +10,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/vocal_range')
+def vocal_range():
+    return render_template('vocal_range.html')
+
+@app.route('/vocal_range_lowest')
+def vocal_range_lowest():
+    return render_template('vocal_range_lowest.html')
+
 @app.route('/lessons')
 def lessons():
     return render_template('lessons.html')

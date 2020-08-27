@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.21/Tone.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@2.0.13/dist/NexusUI.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.6/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.18.1"></script>
+
+      <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.19.0/es6/music_rnn.js"></script> 
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/addons/p5.sound.js"></script>
+      
+      <!-- Tone Library recommended in Bitrate slack channel for music conversations-->
+      <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
+      <title>Hello!</title>
+
+      <!-- Materialize UI CSS and JS file-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!--Import Google Fonts-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+        
+              
+      <!-- import the webpage's stylesheet -->
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      
+      <!-- import the webpage's javascript file -->
+      <!-- <script src="{{ url_for('static',filename='js/vocal_range.js') }}" defer></script> -->
+  </head>  
+  <body>
+    <nav>
+      <div class="nav-wrapper indigo lighten-3">
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static',filename='imgs/maestro2.png') }}" class="brand-logo"></img></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="./">Sign In</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h1></h1>
+      <h3 style="font-family: 'Nanum Myeongjo', serif;"> Vocal Range </h3>
+
+      <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What is a vocal range? </h5>
+
+      <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;"> The broadest definition of "vocal range" is simply the span from the lowest to the highest note a particular voice can produce.
+        In the context of singing, vocalists describe the vocal range as all the "musically useful" pitches that a person can sing. 
+        For example, a singer like Beyoncé has one of the most versatile vocal ranges, starting at a very low pitch of A2 and hitting a higher pitch of E6.
+      </p>
+
+      <p class="card-panel grey lighten-4" style="font-family: 'Roboto', sans-serif; margin-left: 30px;">  
+        <!-- <i style="vertical-align: bottom;" class="material-icons">star</i> -->
+        Note: When we write a pitch as A2, this is scientific pitch notation! The letter represents the pitch and the number represents the octave. 
+        The first 12 notes of a piano are the first octave, denoted as C1, D1, E1...
+      </p>
+      <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What are the types of vocal ranges? </h5>
+
+      <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;">
+          Though everyone’s range is specific to their voice, most vocal ranges are categorized within 4 basic voice types: 
+          <ul style="font-family: 'Roboto', sans-serif; margin-left: 60px; line-height:28px">
+            <li>Bass: the lowest male voice, E2 to E4. </li>
+            <li>Tenor: the highest male voice, B2 to A4, and possibly higher.</li>
+            <li>Alto: the lowest female voice, F3 to E5.</li>
+            <li>Soprano: the highest female voice, being able to sing C4 to C6, and possibly higher.</li>
+          </ul>
+          <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;"> This is best to visualize on a piano! </p>
+          <!-- <img class="materialboxed" width="650" src="{{ url_for('static',filename='imgs/range.png') }}"> -->
+          <img src="{{ url_for('static',filename='imgs/range.png') }}" class="center" alt="Vocal range visualized on a piano" width="700" style="margin-left: 30px; display: block; margin-left: auto; margin-right: auto;">
+      </p>
+
+      <h5 style="font-family: 'Nanum Myeongjo', sans-serif;"> What is my vocal range? </h5>
+
+      <p style="font-family: 'Roboto', sans-serif; margin-left: 30px;">
+        Knowing your vocal range will help you understand how high and low you can sing. 
+        It will also help you to learn where your weak spots are, and with advanced lessons, you will be able to expand your span of notes. 
+        <br><br>
+        Maestro will do a quick exercise to measure your vocal range. Please ensure that you have an Audio Input source and that your browser has permission to access your mic.
+        <br><br>
+        <a href="{{ url_for('vocal_range_lowest') }}" class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5">Find my vocal Range!</a>
+      </p>
+    </div>
+
+   
+  </body>
+</html>
