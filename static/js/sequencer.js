@@ -1,7 +1,8 @@
 class Sequencer {
   sequencerRows = ['B5', 'Bb5', 'A5', 'Ab5', 'G5', 'Gb5', 'F5', 'E5', 'Eb5', 'D5', 'Db5', 'C5','B4', 'Bb4', 'A4', 'Ab4', 'G4', 'Gb4', 'F4', 'E4', 'Eb4', 'D4', 'Db4', 'C4','B3', 'Bb3', 'A3', 'Ab3', 'G3', 'Gb3', 'F3', 'E3', 'Eb3', 'D3', 'Db3', 'C3'];
 
-  constructor(container_id, sequencer_id, cell_id) {
+  constructor(container_id, sequencer_id, cell_id, notes) {
+    console.log(notes);
     let main_container = document.getElementById(container_id)
     var note;
     for (note of this.sequencerRows){
@@ -12,7 +13,7 @@ class Sequencer {
     }
 
     let sequencer = new Nexus.Sequencer(sequencer_id, {
-        columns: 32,
+        columns: notes.length,
         rows: this.sequencerRows.length,
         mode: 'toggle',
         size: [600, 680]
@@ -24,8 +25,9 @@ class Sequencer {
         num +=1;
     });
     this.sequencer = sequencer;
-    this.notes = undefined;
+    this.notes = notes;
     this.cell_id = cell_id
+    this.resetSequencer();
   };
 
   resetCounter(){
@@ -59,7 +61,7 @@ class Sequencer {
     this.sequencer.matrix.populate.all([0]);
     let column = 0;
     let midiNum, current;
-    for (let note of this.notes.notes) {
+    for (let note of this.notes) {
         midiNum = freqToMidi(note.pitch);
         current = Tonal.Midi.midiToNoteName(midiNum)
         let row = this.getSequencerRow(Tone.Frequency(note.pitch, "midi").toFrequency()) 
