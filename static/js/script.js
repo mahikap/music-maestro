@@ -9,8 +9,9 @@ var vizPlayer = new mm.Player();
 //globals
 let sequencers = new Map();
 let buttons = new Map();
+let notes = new Map();
 let current_tab;
-let notes = undefined;
+// let notes = undefined;
 let current_col;
 let prev;
 let score = 0;
@@ -18,15 +19,39 @@ let current_note;
 let detected;
 let runPitch = false;
 
-sequencers.set('test1', new Sequencer('note-container', 'sequencer', 'cell1'));
-sequencers.set('test4', new Sequencer('note-container-2', 'sequencer-2', 'cell2'));
-
 buttons.set('test1', {"practice": "practice", "stop": "stop"})
 buttons.set('test4', {"practice": "practice-2", "stop": "stop-2"})
 
+notes.set('test1', practice1_notes())
+// notes.set('test4', {"practice": "practice-2", "stop": "stop-2"})
+
 let sequencer;
-generateNotes(sequencers.get('test1'));
-generateNotes(sequencers.get('test4'));
+
+async function initalizeNotes(){
+    // let practice1_notes = await generateNotes();
+    let practice4_notes = await generateNotes();
+    notes.set('test4', practice4_notes);
+    sequencers.set('test1', new Sequencer('note-container', 'sequencer', 'cell1', practice1_notes().notes));
+    sequencers.set('test4', new Sequencer('note-container-2', 'sequencer-2', 'cell2', practice4_notes.notes));
+}
+
+initalizeNotes();
+
+function practice1_notes(){
+    return {notes: [
+            { pitch: 60, startTime: 0.0, endTime: 4.0 },
+            { pitch: 62, startTime: 4.0, endTime: 8.0 },
+            { pitch: 64, startTime: 8.0, endTime: 12.0 },
+            { pitch: 62, startTime: 12.0, endTime: 16.0 },
+            { pitch: 60, startTime: 16.0, endTime: 20.0 },
+        ],
+        tempos: [{
+            time: 0, 
+            qpm: 120
+            }],
+            totalTime: 20.0
+        };
+}
 
 async function generateNotes(sequencer) {
     await rnnLoaded;
@@ -49,8 +74,8 @@ async function generateNotes(sequencer) {
     var chord_prog = ['C'];
     const qns = mm.sequences.quantizeNoteSequence(seed, 1);
 
-    notes = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog);
-    sequencer.setSequencerNotes(notes);
+    var notes = await melodyRnn.continueSequence(qns, rnn_steps, rnn_temp, chord_prog);
+    return notes
 };
 
 document.getElementById("practice").onclick = () => {;
@@ -82,7 +107,7 @@ function startPractice(sequencer_id) {
     }
     });
 
-    vizPlayer.start(notes);
+    vizPlayer.start(notes.get(current_tab));
 };
 
 // Pitch Detection
