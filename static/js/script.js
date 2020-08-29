@@ -43,12 +43,14 @@ function practice1_notes(){
             { pitch: 60, startTime: 0.0, endTime: 3.0 },
             { pitch: 62, startTime: 3.0, endTime: 6.0 },
             { pitch: 64, startTime: 6.0, endTime: 9.0 },
+            { pitch: 62, startTime: 9.0, endTime: 12.0 },
+            { pitch: 60, startTime: 12.0, endTime: 15.0 },
         ],
         tempos: [{
             time: 0, 
             qpm: 120
             }],
-            totalTime: 9.0
+            totalTime: 15.0
         };
 }
 

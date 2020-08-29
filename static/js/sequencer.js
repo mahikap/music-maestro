@@ -1,5 +1,5 @@
 class Sequencer {
-  sequencerRows = ['C5','B4', 'Bb4', 'A4', 'Ab4', 'G4', 'Gb4', 'F4', 'E4', 'Eb4', 'D4', 'Db4', 'C4','B3', 'Bb3', 'A3', 'Ab3', 'G3', 'Gb3', 'F3', 'E3', 'Eb3', 'D3', 'Db3', 'C3'];
+  sequencerRows = ['Ab4', 'G4', 'Gb4', 'F4', 'E4', 'Eb4', 'D4', 'Db4', 'C4','B3', 'Bb3', 'A3', 'Ab3'];
 
   constructor(container_id, sequencer_id, cell_id, notes) {
     console.log(notes);
@@ -16,7 +16,7 @@ class Sequencer {
         columns: notes.length,
         rows: this.sequencerRows.length,
         mode: 'toggle',
-        size: [600, 680]
+        size: [600, 450]
     })
     const seqBlocks = document.getElementById(sequencer_id).querySelectorAll('rect');
     let num = 1;

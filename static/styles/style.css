@@ -88,14 +88,15 @@ a.back {
 }
 
 .note-label {   
-    height: 26px;   
+    height: 34px;   
     width:100%;  
-    font-size:large;
+    font-size:23px;
     margin-bottom: 1px;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 .sequencer {
-    margin-left: 40px;
+    margin-left: 55px;
 }
 
 .main-container {
