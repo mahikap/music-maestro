@@ -83,19 +83,19 @@ a.back {
 }
 .note-container {
     height: 100px;
-    width: 30px;
+    width: 40px;
     float: left;
 }
 
 .note-label {   
-    height: 18px;   
+    height: 26px;   
     width:100%;  
-    font-size:small;
+    font-size:large;
     margin-bottom: 1px;
 }
 
 .sequencer {
-    margin-left: 30px;
+    margin-left: 40px;
 }
 
 .main-container {
