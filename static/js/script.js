@@ -21,35 +21,72 @@ let runPitch = false;
 
 buttons.set('test1', {"practice": "practice", "stop": "stop"})
 buttons.set('test4', {"practice": "practice-2", "stop": "stop-2"})
-
-notes.set('test1', practice1_notes())
-// notes.set('test4', {"practice": "practice-2", "stop": "stop-2"})
+buttons.set('test5', {"practice": "practice-3", "stop": "stop-3"})
 
 let sequencer;
 
 async function initalizeNotes(){
-    // let practice1_notes = await generateNotes();
-    let practice4_notes = await generateNotes();
-    notes.set('test4', practice4_notes);
+    await rnnLoaded;
+
+    notes.set('test1', practice1_notes())
+    notes.set('test4', practice2_notes())
+    notes.set('test5', practice3_notes());
     sequencers.set('test1', new Sequencer('note-container', 'sequencer', 'cell1', practice1_notes().notes));
-    sequencers.set('test4', new Sequencer('note-container-2', 'sequencer-2', 'cell2', practice4_notes.notes));
+    sequencers.set('test4', new Sequencer('note-container-2', 'sequencer-2', 'cell2', practice2_notes().notes));
+    sequencers.set('test5', new Sequencer('note-container-3', 'sequencer-3', 'cell3', practice3_notes().notes));
 }
 
 initalizeNotes();
 
 function practice1_notes(){
     return {notes: [
-            { pitch: 60, startTime: 0.0, endTime: 4.0 },
-            { pitch: 62, startTime: 4.0, endTime: 8.0 },
-            { pitch: 64, startTime: 8.0, endTime: 12.0 },
-            { pitch: 62, startTime: 12.0, endTime: 16.0 },
-            { pitch: 60, startTime: 16.0, endTime: 20.0 },
+            { pitch: 60, startTime: 0.0, endTime: 3.0 },
+            { pitch: 62, startTime: 3.0, endTime: 6.0 },
+            { pitch: 64, startTime: 6.0, endTime: 9.0 },
         ],
         tempos: [{
             time: 0, 
             qpm: 120
             }],
-            totalTime: 20.0
+            totalTime: 9.0
+        };
+}
+
+
+function practice2_notes(){
+    return {notes: [
+            { pitch: 60, startTime: 0.0, endTime: 3.0 },
+            { pitch: 62, startTime: 3.0, endTime: 6.0 },
+            { pitch: 64, startTime: 6.0, endTime: 9.0 },
+            { pitch: 60, startTime: 9.0, endTime: 12.0 },
+            { pitch: 62, startTime: 12.0, endTime: 15.0 },
+            { pitch: 64, startTime: 15.0, endTime: 18.0 },
+        ],
+        tempos: [{
+            time: 0, 
+            qpm: 120
+            }],
+            totalTime: 18.0
+        };
+}
+
+function practice3_notes(){
+    return {notes: [
+            { pitch: 60, startTime: 0.0, endTime: 3.0 },
+            { pitch: 62, startTime: 3.0, endTime: 6.0 },
+            { pitch: 64, startTime: 6.0, endTime: 9.0 },
+            { pitch: 62, startTime: 9.0, endTime: 12.0 },
+            { pitch: 60, startTime: 12.0, endTime: 15.0 },
+            { pitch: 62, startTime: 15.0, endTime: 18.0 },
+            { pitch: 64, startTime: 18.0, endTime: 21.0 },
+            { pitch: 62, startTime: 21.0, endTime: 24.0 },
+            { pitch: 60, startTime: 24.0, endTime: 27.0 },
+        ],
+        tempos: [{
+            time: 0, 
+            qpm: 120
+            }],
+            totalTime: 27.0
         };
 }
 
@@ -57,10 +94,15 @@ async function generateNotes(sequencer) {
     await rnnLoaded;
     let seed = {
         notes: [
-        { pitch: 60, startTime: 0.0, endTime: 2.0 },
-        { pitch: 60, startTime: 2.0, endTime: 3.0 },
-        // { pitch: 60, startTime: 2.0, endTime: 3.0 },
-        // { pitch: 60, startTime: 3.0, endTime: 4.0 }
+            { pitch: 60, startTime: 0.0, endTime: 4.0 },
+            { pitch: 62, startTime: 4.0, endTime: 8.0 },
+            { pitch: 64, startTime: 8.0, endTime: 12.0 },
+            { pitch: 62, startTime: 12.0, endTime: 16.0 },
+            { pitch: 60, startTime: 16.0, endTime: 20.0 },
+            { pitch: 62, startTime: 4.0, endTime: 8.0 },
+            { pitch: 64, startTime: 8.0, endTime: 12.0 },
+            { pitch: 62, startTime: 12.0, endTime: 16.0 },
+            { pitch: 60, startTime: 16.0, endTime: 20.0 },
         ],
         tempos: [{
         time: 0, 
@@ -86,6 +128,11 @@ document.getElementById("practice").onclick = () => {;
 document.getElementById("practice-2").onclick = () => {
     current_tab = "test4";
     startPractice("test4")
+}
+
+document.getElementById("practice-3").onclick = () => {
+    current_tab = "test5";
+    startPractice("test5")
 }
 
 function startPractice(sequencer_id) {
@@ -127,7 +174,6 @@ function startPitch(stream, audioContext) {
 }
 
 function modelLoaded() {
-    select('#status').html('Model Loaded'); 
     getPitch();
 }
 
@@ -136,7 +182,6 @@ function getPitch() {
         if (frequency && current_note) {
             midiNum = freqToMidi(frequency);
             current = Tonal.Midi.midiToNoteName(midiNum)
-            select(`#${current_tab}-currentNote`).html(current);
             if(prev) {
                 var row = sequencer.getSequencerRow(frequency)
                 if(prev[0] == current_col) {
@@ -163,6 +208,11 @@ document.getElementById("stop").onclick = async () => {
 };
 
 document.getElementById("stop-2").onclick = async () => {
+    sequencerStop();
+    vizPlayer.stop();
+};
+
+document.getElementById("stop-3").onclick = async () => {
     sequencerStop();
     vizPlayer.stop();
 };
