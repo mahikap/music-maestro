@@ -33,9 +33,10 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     
     <!-- import the webpage's javascript file -->
-    <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+    <!-- <script src="{{ url_for('static',filename='js/script.js') }}" defer></script> -->
     <script src="{{ url_for('static',filename='js/test.js') }}" defer></script>
-
+    <script src="{{ url_for('static',filename='js/sequencer.js') }}" defer></script>
+    
 </head>
 
 <body>
@@ -73,7 +74,7 @@
                 <a href="#test" id="test-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5 test-button">Begin Test</a>
             </div>
             
-            <div id="test" class="col s12">
+            <div id="test1" class="col s12">
                 
                 <h1></h1>
 
@@ -82,12 +83,14 @@
 
                 <p id='status'>Loading Model...</p>
                 
-                <p>Current Note: <span id="currentNote"></span> </p>
-                <p>Current Score: <span id="currentScore"></span> </p>
-                <div id="main-container">
-                    <div id="note-container"></div>
-                    <div id="sequencer"></div>
+                <p>Current Note: <span id="test1-currentNote"></span> </p>
+                <p>Current Score: <span id="test1-score"></span> </p>
+                <div class="main-container" id="main-container">
+                    <div class="note-container" id="note-container"></div>
+                    <div class="sequencer" id="sequencer"></div>
                 </div>
+
+
                 <h1></h1>
                 
             </div>
