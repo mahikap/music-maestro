@@ -63,18 +63,13 @@
                     <li class="tab col s3"><a href="#test2">Video: Breathing</a></li>
                     <li class="tab col s3 disabled"><a href="#test3">Video: C-ing the note</a></li>
                     <li class="tab col s3"><a href="#test4">Practice II</a></li>
-                    <li class="tab col s3 disabled"><a href="#test5">Practice III</a></li>
+                    <li class="tab col s3"><a href="#test5">Practice III</a></li>
                 </ul>
             </div>
             
             <div id="test1" class="col s12">
-                Practice (Insert sequencer here with aiming to hit sequence- C D E D C)
                 <button id="stop" style="display:none">Stop</button>
                 <button id="practice">Start Practice</button>
-
-                <p id='status'>Loading Model...</p>
-                
-                <p>Current Note: <span id="test1-currentNote"></span> </p>
                 <p>Current Score: <span id="test1-score"></span> </p>
                 <div class="main-container" id="main-container">
                     <div class="note-container" id="note-container"></div>
@@ -95,16 +90,22 @@
                 <button id="stop-2" style="display:none">Stop</button>
                 <button id="practice-2">Start Practice</button>
 
-                <p id='status'>Loading Model...</p>
-                
-                <p>Current Note: <span id="test4-currentNote"></span> </p>
                 <p>Current Score: <span id="test4-score"></span> </p>
                 <div class="main-container" id="main-container-2">
                     <div class="note-container" id="note-container-2"></div>
                     <div class="sequencer" id="sequencer-2"></div>
                 </div>
             </div>
-            <div id="test5" class="col s12">Test 5</div>
+            <div id="test5" class="col s12">
+                <button id="stop-3" style="display:none">Stop</button>
+                <button id="practice-3">Start Practice</button>
+                
+                <p>Current Score: <span id="test5-score"></span> </p>
+                <div class="main-container" id="main-container-3">
+                    <div class="note-container" id="note-container-3"></div>
+                    <div class="sequencer" id="sequencer-3"></div>
+                </div>
+            </div>
         </div>
     </div>
 
