@@ -208,7 +208,7 @@ function setupSequencer(){
     for (note of sequencerRows){
         var temp = document.createElement('div');
         main_container.appendChild(temp);
-        temp.className = "note-label";
+        temp.className = "range-label";
         temp.innerText = note;
     }
 
