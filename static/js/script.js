@@ -198,6 +198,9 @@ function getPitch() {
                         score +=1;
                         select(score_label()).html(score);
                     }
+                    if (score == sequencer.getColumns()){
+                        console.log("Perfect Score!")
+                    }
                 }
             }
             prev = [current_col, sequencer.getSequencerRow(frequency)]

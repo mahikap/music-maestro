@@ -121,3 +121,11 @@ h5 {
     margin-bottom: 30px;
     margin-top: 20px;
 }
+
+.switch-tab-btn {
+    float: right;
+}
+
+.next-icon {
+    vertical-align: bottom;
+}
