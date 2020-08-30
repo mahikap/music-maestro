@@ -32,24 +32,26 @@
       <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
       
       <!-- import the webpage's javascript file -->
-      <script src="{{ url_for('static',filename='js/script.js') }}" defer></script>
+      <!-- <script src="{{ url_for('static',filename='js/script.js') }}" defer></script> -->
   </head>  
   <body>
     <nav>
       <div class="nav-wrapper indigo lighten-3">
-        <img src="{{ url_for('static',filename='imgs/maestro2.png') }}" href="#" class="brand-logo"></img>
+        <img src="{{ url_for('static',filename='imgs/maestro2.png') }}" href="#" class="brand-logo center"></img>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="./">Sign In</a></li>
+        <!-- <li><a href="./">Sign In</a></li> -->
         </ul>
       </div>
     </nav>
     <div class="container">
-      <blockquote style="border-left: 5px solid black;">
+      
+      <blockquote style="border-left: 5px solid black; margin-top: 80px;">
           <h2 style="font-family: 'Nanum Myeongjo', serif;">
             maes &#183; stro
           </h2>
           <p style="font-family: 'Roboto', sans-serif; font-style: italic;">
-              a distinguished musician, especially a conductor of classical music.
+              a distinguished musician, especially a conductor of classical music. <h6></h6>
+              (alt.) an application that uses the power of Machine Learning to guide you in becoming a good vocalist.
           </p>
       </blockquote>
       
