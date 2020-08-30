@@ -59,33 +59,45 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs tabs-fixed-width">
-                    <li class="tab col s3"><a class="active" href="#test1">Practice I</a></li>
-                    <li class="tab col s3"><a href="#test2">Video: Breathing</a></li>
-                    <li class="tab col s3 disabled"><a href="#test3">Video: C-ing the note</a></li>
-                    <li class="tab col s3"><a href="#test4">Practice II</a></li>
-                    <li class="tab col s3"><a href="#test5">Practice III</a></li>
+                    <li id="tab1" class="tab col s3"><a class="active" href="#test1">Practice I</a></li>
+                    <li id="tab2" class="tab col s3 disabled"><a href="#test2">Video: Breathing</a></li>
+                    <li id="tab3" class="tab col s3 disabled"><a href="#test3">Video: C-ing the note</a></li>
+                    <li id="tab4" class="tab col s3 disabled"><a href="#test4">Practice II</a></li>
+                    <li id="tab5" class="tab col s3 disabled"><a href="#test5">Practice III</a></li>
                 </ul>
             </div>
             
             <div id="test1" class="col s12">
-                <button id="stop" style="display:none">Stop</button>
-                <button id="practice">Start Practice</button>
-                <p>Current Score: <span id="test1-score"></span> </p>
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    Before we start with the lesson, here's a quick test to see where you're at.
+                    Try to match your pitch to the notes that are playing, similar to your vocal range tests. <br><br>
+                    Your score will reflect how many notes you were able to sing correctly.
+                </p>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5" id="stop" style="display:none">Stop</button>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="practice">Start Practice</button>
+                <p class="score" >Current Score <span style="font-family: 'Roboto';" >:   </span> <span id="test1-score">-</span> / 7</p>
                 <div class="main-container" id="main-container">
                     <div class="note-container" id="note-container"></div>
                     <div class="sequencer" id="sequencer"></div>
                 </div>
-                <h1></h1>
-                <a href="#test2" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go to Lesson</a>
+                <a href="#test2" id="tabs-button-1" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go to Lesson</a>
             </div>
             
             <div id="test2" class="col s12">
-                Video 1
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    Before we starting singing, we need to understand our breathing pattern and posture. <br><br><br>
+                    <iframe width="660" height="385" src="https://www.youtube.com/embed/4-CYJRmZn48" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </p>
                 <h1></h1>
                 
-                <a href="#test1" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go Back</a>
+                <a href="#test3" id="tabs-button-2" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Next</a>
             </div>
-            <div id="test3" class="col s12"></div>
+
+            <div id="test3" class="col s12">
+                Video 2
+                <a href="#test4" id="tabs-button-3" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Practice</a>
+            </div>
+
             <div id="test4" class="col s12">
                 <button id="stop-2" style="display:none">Stop</button>
                 <button id="practice-2">Start Practice</button>
@@ -95,7 +107,9 @@
                     <div class="note-container" id="note-container-2"></div>
                     <div class="sequencer" id="sequencer-2"></div>
                 </div>
+                <a href="#test5" id="tabs-button-4" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Next</a>
             </div>
+
             <div id="test5" class="col s12">
                 <button id="stop-3" style="display:none">Stop</button>
                 <button id="practice-3">Start Practice</button>
@@ -106,6 +120,7 @@
                     <div class="sequencer" id="sequencer-3"></div>
                 </div>
             </div>
+
         </div>
     </div>
 

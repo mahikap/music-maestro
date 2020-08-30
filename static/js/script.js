@@ -40,17 +40,19 @@ initalizeNotes();
 
 function practice1_notes(){
     return {notes: [
-            { pitch: 60, startTime: 0.0, endTime: 3.0 },
-            { pitch: 62, startTime: 3.0, endTime: 6.0 },
-            { pitch: 64, startTime: 6.0, endTime: 9.0 },
-            { pitch: 62, startTime: 9.0, endTime: 12.0 },
-            { pitch: 60, startTime: 12.0, endTime: 15.0 },
+            { pitch: 60, startTime: 0.0, endTime: 2.0 },
+            { pitch: 62, startTime: 2.0, endTime: 4.0 },
+            { pitch: 64, startTime: 4.0, endTime: 6.0 },
+            { pitch: 62, startTime: 6.0, endTime: 8.0 },
+            { pitch: 60, startTime: 8.0, endTime: 10.0 },
+            { pitch: 62, startTime: 10.0, endTime: 12.0 },
+            { pitch: 64, startTime: 12.0, endTime: 14.0 },
         ],
         tempos: [{
             time: 0, 
             qpm: 120
             }],
-            totalTime: 15.0
+            totalTime: 14.0
         };
 }
 
@@ -246,9 +248,31 @@ function score_label(){
 var el = document.querySelector('.tabs');
 var instance = M.Tabs.init(el, {});
 
-document.getElementById("tabs-button").onclick = () => { 
-    console.log("changed tab")
+document.getElementById("tabs-button-1").onclick = () => { 
+    document.getElementById('tab2').classList.remove("disabled")
     var el = document.querySelector('.tabs');
     var instance = M.Tabs.init(el, {});
+    instance.select('tab2');
+    instance.updateTabIndicator();
+}
+document.getElementById("tabs-button-2").onclick = () => { 
+    document.getElementById('tab3').classList.remove("disabled")
+    var el = document.querySelector('.tabs');
+    var instance = M.Tabs.init(el, {});
+    instance.select('tab3');
+    instance.updateTabIndicator();
+}
+document.getElementById("tabs-button-3").onclick = () => { 
+    document.getElementById('tab4').classList.remove("disabled")
+    var el = document.querySelector('.tabs');
+    var instance = M.Tabs.init(el, {});
+    instance.select('tab4');
+    instance.updateTabIndicator();
+}
+document.getElementById("tabs-button-4").onclick = () => { 
+    document.getElementById('tab5').classList.remove("disabled")
+    var el = document.querySelector('.tabs');
+    var instance = M.Tabs.init(el, {});
+    instance.select('tab5');
     instance.updateTabIndicator();
 }

@@ -16,7 +16,7 @@ class Sequencer {
         columns: notes.length,
         rows: this.sequencerRows.length,
         mode: 'toggle',
-        size: [600, 450]
+        size: [700, 450]
     })
     const seqBlocks = document.getElementById(sequencer_id).querySelectorAll('rect');
     let num = 1;
@@ -40,7 +40,7 @@ class Sequencer {
 
   setDetected(col, row, on) {
     var id = (row * this.sequencer.columns) + col;
-    var color = on ? "#808" : "#eee";
+    var color = on ? "#7986cb" : "#eee";
     if (document.getElementById(`${this.cell_id}-${id}`)) {
         document.getElementById(`${this.cell_id}-${id}`).setAttribute('fill', color);
     }
