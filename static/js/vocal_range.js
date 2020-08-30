@@ -216,7 +216,7 @@ function setupSequencer(){
         columns: 2,
         rows: sequencerRows.length,
         mode: 'toggle',
-        size: [150, 350] // Each note is 20
+        size: [150, 425] // Each note is 20
     })
     const seqBlocks = document.getElementById("sequencer").querySelectorAll('rect');
     num = 0;
