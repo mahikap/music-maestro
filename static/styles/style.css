@@ -4,6 +4,7 @@ body {
 .start-button {
     font-family: 'Roboto', sans-serif;
     text-align: center;
+    margin-top: 30px;
 }
 
 h4 {
@@ -83,24 +84,34 @@ a.back {
 }
 .note-container {
     height: 100px;
-    width: 30px;
+    width: 40px;
     float: left;
 }
 
 .note-label {   
-    height: 18px;   
+    height: 34px;   
     width:100%;  
-    font-size:small;
+    font-size:19px;
     margin-bottom: 1px;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.range-label {   
+    height: 16px;   
+    width:100%;  
+    font-size:12px;
+    margin-bottom: 1px;
+    font-family: 'Nanum Myeongjo', sans-serif;
+    font-weight: 700;
 }
 
 .sequencer {
-    margin-left: 30px;
+    margin-left: 50px;
 }
 
 .main-container {
     width: 80%;
-    height: 690px;
+    height: 500px;
     margin: auto;
     padding: 10px;
 }
@@ -108,4 +119,23 @@ a.back {
 h5 {
     margin-top: 40px;
     margin-left: 30px;
+}
+
+.score {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 19px;
+    margin-left: 10px;
+}
+
+.practice {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.switch-tab-btn {
+    float: right;
+}
+
+.next-icon {
+    vertical-align: bottom;
 }

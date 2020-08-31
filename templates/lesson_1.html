@@ -26,7 +26,7 @@
     <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!--Import Google Fonts-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Roboto&family=Nanum+Gothic&display=swap" rel="stylesheet">
         
             
     <!-- import the webpage's stylesheet -->
@@ -59,52 +59,87 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs tabs-fixed-width">
-                    <li class="tab col s3"><a class="active" href="#test1">Practice I</a></li>
-                    <li class="tab col s3"><a href="#test2">Video: Breathing</a></li>
-                    <li class="tab col s3 disabled"><a href="#test3">Video: C-ing the note</a></li>
-                    <li class="tab col s3"><a href="#test4">Practice II</a></li>
-                    <li class="tab col s3 disabled"><a href="#test5">Practice III</a></li>
+                    <li id="tab1" class="tab col s3"><a class="active" href="#test1">Practice I</a></li>
+                    <li id="tab2" class="tab col s3 disabled"><a href="#test2">Video: Breathing</a></li>
+                    <li id="tab3" class="tab col s3 disabled"><a href="#test3">Video: C-ing the note</a></li>
+                    <li id="tab4" class="tab col s3 disabled"><a href="#test4">Practice II</a></li>
+                    <li id="tab5" class="tab col s3 disabled"><a href="#test5">Practice III</a></li>
                 </ul>
             </div>
             
             <div id="test1" class="col s12">
-                Practice (Insert sequencer here with aiming to hit sequence- C D E D C)
-                <button id="stop" style="display:none">Stop</button>
-                <button id="practice">Start Practice</button>
-
-                <p id='status'>Loading Model...</p>
-                
-                <p>Current Note: <span id="test1-currentNote"></span> </p>
-                <p>Current Score: <span id="test1-score"></span> </p>
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    Before we start with the lesson, here's a quick test to see where you're at.
+                    Try to match your pitch to the notes that are playing, similar to your vocal range tests. <br><br>
+                    Your score will reflect how many notes you were able to sing correctly.
+                </p>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="stop" style="display:none">Stop</button>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="practice">Start Practice</button>
+                <p class="score" >Current Score <span style="font-family: 'Roboto';" >:   </span> <span id="test1-score">-</span> / 7</p>
                 <div class="main-container" id="main-container">
                     <div class="note-container" id="note-container"></div>
                     <div class="sequencer" id="sequencer"></div>
                 </div>
-                <h1></h1>
-                <a href="#test2" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go to Lesson</a>
+                <a href="#test2" id="tabs-button-1" class="waves-effect waves-light btn-flat btn-large indigo lighten-5 switch-tab-btn">Go to Lessons
+                    <i class="next-icon material-icons">navigate_next</i></a>
             </div>
             
             <div id="test2" class="col s12">
-                Video 1
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    Before we starting singing, we need to understand our breathing pattern and posture. <br><br><br>
+                    <iframe width="660" height="385" src="https://www.youtube.com/embed/4-CYJRmZn48" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </p>
                 <h1></h1>
                 
-                <a href="#test1" id="tabs-button" class="waves-effect waves-light btn-flat btn-large indigo lighten-5">Go Back</a>
+                <a href="#test3" id="tabs-button-2" class="waves-effect waves-light btn-flat btn-large indigo lighten-5 switch-tab-btn">Next 
+                    <i class="next-icon material-icons">navigate_next</i></a>
             </div>
-            <div id="test3" class="col s12"></div>
-            <div id="test4" class="col s12">
-                <button id="stop-2" style="display:none">Stop</button>
-                <button id="practice-2">Start Practice</button>
 
-                <p id='status'>Loading Model...</p>
-                
-                <p>Current Note: <span id="test4-currentNote"></span> </p>
-                <p>Current Score: <span id="test4-score"></span> </p>
+            <div id="test3" class="col s12">
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    The C note is very important. It is the home base. The center of the music universe, some say. <br>
+                    It is the reference point to navigate to and from other notes.
+                    This lesson will focus on tuning your sense of the C note. Before you begin singing in any context, it's import to always hum a C to yourself. 
+                    This video will teach you how.
+                </p> <br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/AQ7bJuW_PDk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <h1></h1>
+                <a href="#test4" id="tabs-button-3" class="waves-effect waves-light btn-flat btn-large indigo lighten-5 switch-tab-btn">Practice 
+                    <i class="next-icon material-icons">navigate_next</i></a>
+            </div>
+
+            <div id="test4" class="col s12">
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    Using what you've learned about posture, breathing, and hitting the C note, attempt the sequence below. <br>
+                    Feel free to attempt this sequence multiple times by clicking Start again. Try to aim for a perfect score before moving onto the next practice!
+                </p>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="stop-2" style="display:none">Stop</button>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="practice-2">Start Practice</button>
+
+                <p class="score" >Current Score <span style="font-family: 'Roboto';" >:   </span> <span id="test4-score">-</span> / 6</p>
                 <div class="main-container" id="main-container-2">
                     <div class="note-container" id="note-container-2"></div>
                     <div class="sequencer" id="sequencer-2"></div>
                 </div>
+                <a href="#test5" id="tabs-button-4" class="waves-effect waves-light btn-flat btn-large indigo lighten-5 switch-tab-btn">Next
+                    <i class="next-icon material-icons">navigate_next</i></a>
             </div>
-            <div id="test5" class="col s12">Test 5</div>
+
+            <div id="test5" class="col s12">
+                <h1></h1><p style="font-family: 'Nanum Gothic', sans-serif;">
+                    Here is another practice sequence with the first 3 notes- C D and E. <br>
+                    All the best!
+                </p>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="stop-3" style="display:none">Stop</button>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="practice-3">Start Practice</button>
+                
+                <p class="score" >Current Score <span style="font-family: 'Roboto';" >:   </span> <span id="test5-score">-</span> / 7</p>
+                <div class="main-container" id="main-container-3">
+                    <div class="note-container" id="note-container-3"></div>
+                    <div class="sequencer" id="sequencer-3"></div>
+                </div>
+            </div>
+
         </div>
     </div>
 

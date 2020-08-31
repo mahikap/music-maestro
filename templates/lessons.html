@@ -37,10 +37,11 @@
     function lesson_1_score(){
         var score1 = parseInt(localStorage.getItem('#test1-score')) || 0 
         var score2 = parseInt(localStorage.getItem('#test4-score')) || 0
-        return score1 + score2;
+        var score3 = parseInt(localStorage.getItem('#test5-score')) || 0
+        return score1 + score2 + score3;
     }
     document.addEventListener("DOMContentLoaded", function(){
-        document.getElementById("lesson1-score").textContent = `${lesson_1_score()}/10`
+        document.getElementById("lesson1-score").textContent = `${lesson_1_score()}/18`
     });
 </script>
 
@@ -92,13 +93,5 @@
                 <div class="collapsible-body"><span>Take a test for the lessons you have learned above. The notes will created randomly for testing purpose. </div></li>
         </ul>
                     
-        <!-- <div class="row">
-            <a class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="generate-melody">Generate Melody</a>
-            <a class="start-button waves-effect waves-light btn-flat btn-large indigo lighten-5" id="detect-pitch">Detect my Pitch!</a>
-        </div>
-        
-        <p id='status'>Loading Model...</p>
-        
-        <p>Current Note: <span id="currentNote"></span> </p> -->
     </div>
 </body>

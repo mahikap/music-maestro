@@ -58,14 +58,20 @@ async function generateNotes() {
             seed.notes.push({pitch: i, startTime: j, endTime: j+2.0})
         }
     }
-    
-    
     notes = seed;
     setSequencerNotes();
 };
 
 document.getElementById("next-button").onclick = async () => {
-    isHigh = true;
+    if (isHigh) {
+        console.log("Going to results page")
+        localStorage.setItem("highestNote", highestNote);
+        document.getElementById("vocal-range-results").innerHTML = 
+            `Your vocal range is ${Tonal.Midi.midiToNoteName(lowestNote)} - ${Tonal.Midi.midiToNoteName(highestNote)}`;
+    } else {
+        isHigh = true;
+    }
+    
 }
 
 document.getElementById("practice").onclick = async () => {
@@ -137,7 +143,7 @@ function getPitch() {
                 highestNote = midiNum;
                 select('#currentNote').html(current);
             }
-            if (!isHigh && midiNum <= lowestNote && (midiNum - 8) < lowestNote) {
+            if (!isHigh && midiNum <= lowestNote && midiNum >= (lowestNote-4)) { // disregarding background noise which is usually very low pitched
                 current = Tonal.Midi.midiToNoteName(midiNum)
                 lowestNote = midiNum;
                 select('#currentNote').html(current);
@@ -202,7 +208,7 @@ function setupSequencer(){
     for (note of sequencerRows){
         var temp = document.createElement('div');
         main_container.appendChild(temp);
-        temp.className = "note-label";
+        temp.className = "range-label";
         temp.innerText = note;
     }
 
@@ -210,7 +216,7 @@ function setupSequencer(){
         columns: 2,
         rows: sequencerRows.length,
         mode: 'toggle',
-        size: [150, 475] // Each note is 20
+        size: [150, 425] // Each note is 20
     })
     const seqBlocks = document.getElementById("sequencer").querySelectorAll('rect');
     num = 0;
@@ -243,6 +249,10 @@ function pitchResult(){
             `The highest pitch in your current vocal range is ${highestPitch}.`;
         // Store
         localStorage.setItem("highestNote", highestNote);
+        var nxt = document.getElementById("next-button");
+        if (nxt.style.display === "none") {
+            nxt.style.display = "block";
+        }
     } else {
         lowestPitch = Tonal.Midi.midiToNoteName(lowestNote)
         document.getElementById('pitch-result').innerHTML = 

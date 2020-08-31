@@ -78,13 +78,13 @@
                 
                 <h1></h1>
 
-                <button id="stop" style="display:none">Stop</button>
-                <button id="practice">Start Practice</button>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="stop" style="display:none">Stop</button>
+                <button class="waves-effect waves-light btn-flat btn-large indigo lighten-5 practice" id="practice">Start Practice</button>
 
-                <p id='status'>Loading Model...</p>
+                <p id='status' style="display:none">Loading Model...</p>
                 
-                <p>Current Note: <span id="test1-currentNote"></span> </p>
-                <p>Current Score: <span id="test1-score"></span> </p>
+                <p style="display:none">Current Note: <span id="test1-currentNote"></span> </p>
+                <p class="score" >Current Score <span style="font-family: 'Roboto';" >:   </span> <span id="test1-score">-</span> / 7</p>
                 <div class="main-container" id="main-container">
                     <div class="note-container" id="note-container"></div>
                     <div class="sequencer" id="sequencer"></div>
