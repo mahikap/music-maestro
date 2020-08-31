@@ -11,6 +11,7 @@ document.getElementById('test-button').onclick = () => {
     instance.select('test')
 
     document.getElementById("test1").style.display="block";
+    document.getElementById("instructions").style.display="none";
 }
 
 // import Sequencer from './sequencer'; 

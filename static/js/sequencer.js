@@ -47,7 +47,7 @@ class Sequencer {
   }
 
   getSequencerRow(freq) {
-    let midiNum = freqToMidi(freq);
+    let midiNum = Tonal.Midi.freqToMidi(freq);
     let current = Tonal.Midi.midiToNoteName(midiNum);
     return this.sequencerRows.indexOf(current)
   }
@@ -62,7 +62,7 @@ class Sequencer {
     let column = 0;
     let midiNum, current;
     for (let note of this.notes) {
-        midiNum = freqToMidi(note.pitch);
+        midiNum = Tonal.Midi.freqToMidi(note.pitch);
         current = Tonal.Midi.midiToNoteName(midiNum)
         let row = this.getSequencerRow(Tone.Frequency(note.pitch, "midi").toFrequency()) 
         if (row >= 0) {

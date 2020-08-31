@@ -184,7 +184,7 @@ function modelLoaded() {
 function getPitch() {
     pitch.getPitch(function(err, frequency) {
         if (frequency && current_note) {
-            midiNum = freqToMidi(frequency);
+            midiNum = Tonal.Midi.freqToMidi(frequency);
             current = Tonal.Midi.midiToNoteName(midiNum)
             if(prev) {
                 var row = sequencer.getSequencerRow(frequency)
@@ -193,13 +193,11 @@ function getPitch() {
                 }
                 if(row > 0) {
                     sequencer.setDetected(current_col, row, true);
-                    if(midiNum == current_note.pitch && !detected){
+                    
+                    if(Math.round(midiNum) == current_note.pitch && !detected){
                         detected = true;
                         score +=1;
                         select(score_label()).html(score);
-                    }
-                    if (score == sequencer.getColumns()){
-                        console.log("Perfect Score!")
                     }
                 }
             }
