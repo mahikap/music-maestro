@@ -9,6 +9,8 @@ document.getElementById('test-button').onclick = () => {
     var el = document.querySelector('.tabs');
     var instance = M.Tabs.init(el, {});
     instance.select('test')
+
+    document.getElementById("test1").style.display="block";
 }
 
 // import Sequencer from './sequencer'; 
