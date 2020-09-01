@@ -9,6 +9,8 @@ Each lesson has a series of video's for the user to watch followed by practice s
 
 <img width="983" alt="Screen Shot 2020-08-31 at 5 44 26 PM" src="https://user-images.githubusercontent.com/13487091/91777670-7fe13280-ebbe-11ea-8f49-7fcf62af319f.png">
 
+Our [Maestro Demo Video](https://www.youtube.com/watch?v=2yf7bnQ1sAw) is hosted on YouTube.
+
 Developed for the [The BitRate: Remote Machine Learning & Music Series](https://devpost.com/software/maestro-gdwh0f) hackaton. 
 
 #### Installation
